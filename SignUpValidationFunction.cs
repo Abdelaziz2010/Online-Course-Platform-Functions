@@ -200,3 +200,18 @@ public class SignUpValidationFunction
         }
     }
 }
+
+
+/*
+ Request body: 
+{
+  "step":"PreTokenIssuance",
+  "client_id":"f9d96116-bd30-4770-b15a-f199417bc3cf",
+  "ui_locales":"en-US",
+  "email":"alisaleh@gmail.com",
+  "objectId":"1e3c9eec-f498-480d-992a-cf0e153e2f75",
+  "givenName":"Ali", 
+  "surname":"Saleh",
+  "displayName":"AliSaleh"
+}
+ */

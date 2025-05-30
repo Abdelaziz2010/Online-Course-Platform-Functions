@@ -22,8 +22,9 @@ public class UserProfileFunction
         _configuration = configuration;
     }
 
-    [Function("UserProfileFunction")]
-    public async Task<IActionResult> Run([HttpTrigger(AuthorizationLevel.Function, "post")] HttpRequest req)
+    [Function("UpdateUserProfile")]
+    public async Task<IActionResult> Run(
+        [HttpTrigger(AuthorizationLevel.Function, "post", Route = "UpdateUserProfile")] HttpRequest req)
     {
         _logger.LogInformation("C# HTTP trigger function processed UpdateUserProfile request.");
 
