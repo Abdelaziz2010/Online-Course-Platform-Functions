@@ -15,6 +15,8 @@ public partial class VideoRequest
 
     public string ShortTitle { get; set; } = null!;
 
+    public string RequestStatus { get; set; } = null!;
+
     public string RequestDescription { get; set; } = null!;
 
     public string? Response { get; set; }

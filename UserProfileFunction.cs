@@ -8,9 +8,13 @@ using Microsoft.Extensions.Logging;
 using EduPlatform.Functions.DTOs;
 using System.Text.Json;
 
-
 namespace EduPlatform.Functions;
 
+// The function is triggered by an HTTP POST request and returns the updated user profile with roles.
+// What this function does:
+// 1. It updates the user profile in the database.
+// 2. If the user profile does not exist, it creates a new one.
+// 3. It retrieves the user's roles and returns them in the response.
 public class UserProfileFunction
 {
     private readonly ILogger<UserProfileFunction> _logger;

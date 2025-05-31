@@ -4,11 +4,18 @@ using Microsoft.Azure.Functions.Worker;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 using System.Text;
 using EduPlatform.Functions.DTOs;
 
 namespace EduPlatform.Functions;
+
+// The function is triggered by an HTTP POST request and returns a response indicating whether the sign-up is allowed or if there are validation errors.
+// What this function does:
+// 1. Validates the sign-up request for external users in Azure AD B2C.
+// 2. Checks the email domain against a predefined list of allowed domains.
+// 3. Validates the display name length.
+// 4. Calls another function to update the user profile in the database.
+
 
 public class SignUpValidationFunction
 {

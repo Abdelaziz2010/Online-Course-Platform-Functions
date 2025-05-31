@@ -1,7 +1,7 @@
 {
   "dependencies": {
     "storage1": {
-      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Storage/storageAccounts/learne23d990377934eb473",
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Storage/storageAccounts/learn8f3e02bc744545962f",
       "type": "storage.azure",
       "connectionId": "AzureWebJobsStorage"
     }
