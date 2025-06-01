@@ -217,6 +217,7 @@ namespace EduPlatform.Functions.Entities
                 entity.Property(e => e.Response).HasMaxLength(4000);
                 entity.Property(e => e.ShortTitle).HasMaxLength(200);
                 entity.Property(e => e.SubTopic).HasMaxLength(50);
+                entity.Property(e => e.RequestStatus).HasMaxLength(50);
                 entity.Property(e => e.Topic).HasMaxLength(50);
                 entity.Property(e => e.VideoUrls).HasMaxLength(2000);
 

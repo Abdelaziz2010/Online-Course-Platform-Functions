@@ -3,6 +3,7 @@ using EduPlatform.Functions.Entities;
 using Microsoft.Extensions.Configuration;
 using SendGrid;
 using SendGrid.Helpers.Mail;
+using System;
 
 namespace EduPlatform.Functions.Email
 {
@@ -23,7 +24,6 @@ namespace EduPlatform.Functions.Email
         public async Task SendVideoRequestConfirmation(VideoRequest videoRequest, string userFullName, string userEmailId)
         {
             var apiKey = _configuration["SENDGRID_API_KEY"];
-            
             var from = new EmailAddress(_configuration["From"]);
             
             //var userFullName = $"{videoRequest.User.LastName},{videoRequest.User.FirstName}";
@@ -31,7 +31,7 @@ namespace EduPlatform.Functions.Email
             
             var to = new EmailAddress(userEmailId, userFullName);
             
-            var cc = new EmailAddress(_configuration["From"], "EduPlatfrom App");
+            //var cc = new EmailAddress(_configuration["From"], "EduPlatfrom App");
 
             /*
               <option value="Requested">Requested</option>
@@ -54,12 +54,18 @@ namespace EduPlatform.Functions.Email
 
             sendGridMessage.AddContent(MimeType.Html, GetEmailBody(videoRequest, userFullName));
             sendGridMessage.AddTo(to);
-            sendGridMessage.AddCc(cc);
+
+            // Only add "CC" if it's not the same as the "To" address,
+            // because SendGrid does not allow sending to the same address in "To" and "CC".
+            //if (!string.Equals(userEmailId, fromEmail, StringComparison.OrdinalIgnoreCase))
+            //{
+            //    sendGridMessage.AddCc(cc);
+            //}
 
             Console.WriteLine($"Sending email with payload: \n{sendGridMessage.Serialize()}");
 
             var response = await new SendGridClient(apiKey).SendEmailAsync(sendGridMessage).ConfigureAwait(false);
-            
+
             Console.WriteLine($"Response: {response.StatusCode}");
             
             Console.WriteLine(response.Headers);
